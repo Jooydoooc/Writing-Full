@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Writing Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Intro Screen -->
+    <div id="introScreen" class="screen active">
+        <div class="intro-background">
+            <div class="intro-content">
+                <div class="logo">IELTS</div>
+                <h1 class="intro-title">Writing Excellence</h1>
+                <p class="intro-quote">"The beautiful part of writing is that you don't have to get it right the first time."</p>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <p class="intro-subtitle">Preparing your testing environment...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="screen">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>Welcome to IELTS Writing</h1>
+                    <p>Enter your details to begin your test</p>
+                </div>
+                
+                <div class="login-form">
+                    <div class="input-group">
+                        <input type="text" id="studentName" placeholder=" " required>
+                        <label>First Name</label>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="text" id="studentSurname" placeholder=" " required>
+                        <label>Last Name</label>
+                    </div>
+                    
+                    <button id="loginBtn" class="btn btn-primary">
+                        <span>Enter Test Portal</span>
+                        <div class="btn-loader"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="menuScreen" class="screen">
+        <div class="menu-container">
+            <header class="menu-header">
+                <h1>Writing Test Sets</h1>
+                <p>Welcome, <span id="userName">Student</span></p>
+            </header>
+            
+            <div class="sets-grid" id="setsGrid">
+                <!-- Dynamic sets will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Access Code Modal -->
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Enter Access Code</h3>
+                <button class="modal-close" id="closeCodeModal">×</button>
+            </div>
+            <p id="modalSetName">Set 1 - Film Production</p>
+            <div class="input-group">
+                <input type="password" id="accessCode" placeholder="Enter secret code">
+            </div>
+            <p id="codeError" class="error-message"></p>
+            <div class="modal-actions">
+                <button id="submitCode" class="btn btn-primary">Start Test</button>
+                <button id="cancelCode" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Writing Test Screen -->
+    <div id="testScreen" class="screen">
+        <div class="test-container">
+            <!-- Header -->
+            <header class="test-header">
+                <div class="header-left">
+                    <div class="student-info">
+                        <span id="displayName">Student Name</span>
+                        <span class="set-badge" id="displaySet">Set 1</span>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="timer-display">
+                        <span class="timer-label">Time Remaining:</span>
+                        <div class="timer" id="timer">60:00</div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="settings-menu">
+                        <button class="settings-btn" id="settingsBtn">⚙️</button>
+                        <div class="settings-dropdown" id="settingsDropdown">
+                            <button id="focusModeBtn">🔍 Focus Mode</button>
+                            <button id="backToMenuBtn">🏠 Main Menu</button>
+                        </div>
+                    </div>
+                    <button id="startTestBtn" class="btn btn-start">Start Test</button>
+                </div>
+            </header>
+
+            <!-- Task Navigation -->
+            <nav class="task-nav">
+                <button class="task-btn active" data-task="1">
+                    <span class="task-number">01</span>
+                    <span class="task-label">Writing Task 1</span>
+                    <span class="task-tip">20 mins • 150 words</span>
+                </button>
+                <button class="task-btn" data-task="2">
+                    <span class="task-number">02</span>
+                    <span class="task-label">Writing Task 2</span>
+                    <span class="task-tip">40 mins • 250 words</span>
+                </button>
+            </nav>
+
+            <!-- Resizable Split Container -->
+            <div class="split-container" id="splitContainer">
+                <div class="split-panel question-panel">
+                    <div class="panel-header">
+                        <h3>Question</h3>
+                    </div>
+                    <div class="panel-content" id="questionContent">
+                        <!-- Dynamic content loaded here -->
+                    </div>
+                </div>
+                
+                <div class="split-divider" id="splitDivider"></div>
+                
+                <div class="split-panel answer-panel">
+                    <div class="panel-header">
+                        <h3>Your Answer</h3>
+                        <div class="word-count">Words: <span id="wordCount">0</span></div>
+                    </div>
+                    <div class="panel-content">
+                        <textarea 
+                            id="answerText" 
+                            placeholder="Begin writing your answer here..." 
+                            disabled
+                        ></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Footer -->
+            <footer class="test-footer">
+                <button id="prevTask" class="btn btn-secondary" disabled>
+                    ← Back to Task 1
+                </button>
+                
+                <div class="task-progress">
+                    <span class="current-task">Task 1 of 2</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 50%"></div>
+                    </div>
+                </div>
+                
+                <button id="nextTask" class="btn btn-primary">
+                    Next Task →
+                </button>
+                
+                <button id="submitBtn" class="btn btn-submit" disabled>
+                    Submit Test
+                </button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Review Screen -->
+    <div id="reviewScreen" class="screen">
+        <div class="review-container">
+            <header class="review-header">
+                <h1>🎉 Test Submitted Successfully!</h1>
+                <div class="review-meta">
+                    <span>Time Spent: <strong id="finalTime">60:00</strong></span>
+                    <span>Submitted: <strong id="submitTime"></strong></span>
+                </div>
+            </header>
+            
+            <div class="review-content">
+                <div class="review-section">
+                    <h3>Task 1 Review</h3>
+                    <div class="review-answer" id="reviewAnswer1"></div>
+                    <div class="word-count-review">Words: <span id="reviewWords1">0</span></div>
+                </div>
+                
+                <div class="review-section">
+                    <h3>Task 2 Review</h3>
+                    <div class="review-answer" id="reviewAnswer2"></div>
+                    <div class="word-count-review">Words: <span id="reviewWords2">0</span></div>
+                </div>
+            </div>
+            
+            <div class="review-actions">
+                <button id="newTestBtn" class="btn btn-primary">Start New Test</button>
+                <button id="reviewMenuBtn" class="btn btn-secondary">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Modals -->
+    <div id="warningModal" class="modal">
+        <div class="modal-content warning">
+            <div class="modal-icon">⚠️</div>
+            <h3>Warning: Page Visibility Changed</h3>
+            <p>You have navigated away from the test page. If this happens again, your test will be automatically reset.</p>
+            <button id="closeWarning" class="btn btn-primary">I Understand</button>
+        </div>
+    </div>
+
+    <div id="cheatModal" class="modal">
+        <div class="modal-content cheat">
+            <div class="modal-icon">🚨</div>
+            <h3>Unusual Typing Pattern Detected</h3>
+            <p>Your typing speed exceeds normal limits. Please maintain a natural writing pace.</p>
+            <button id="closeCheat" class="btn btn-primary">Continue Writing</button>
+        </div>
+    </div>
+
+    <div id="timeUpModal" class="modal">
+        <div class="modal-content time-up">
+            <div class="modal-icon">⏰</div>
+            <h3>Time's Up!</h3>
+            <p>Your test has been automatically submitted.</p>
+            <button id="closeTimeUp" class="btn btn-primary">View Results</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
