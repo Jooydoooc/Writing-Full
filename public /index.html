@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated Intro Screen -->
+    <!-- Intro Screen -->
     <div id="introScreen" class="screen active">
         <div class="intro-background">
             <div class="intro-content">
                 <div class="logo">IELTS</div>
-                <h1 class="intro-title">Writing Excellence</h1>
-                <p class="intro-quote">"The beautiful part of writing is that you don't have to get it right the first time."</p>
+                <h1 class="intro-title">Writing Excellence Portal</h1>
+                <p class="intro-quote">"Success is the sum of small efforts, repeated day in and day out."</p>
                 <div class="loading-bar">
                     <div class="loading-progress"></div>
                 </div>
-                <p class="intro-subtitle">Preparing your testing environment...</p>
+                <p class="intro-subtitle">Initializing testing environment...</p>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <div class="login-card">
                 <div class="login-header">
                     <h1>Welcome to IELTS Writing</h1>
-                    <p>Enter your details to begin your test</p>
+                    <p>Enter your details to begin</p>
                 </div>
                 
                 <div class="login-form">
@@ -45,7 +45,6 @@
                     
                     <button id="loginBtn" class="btn btn-primary">
                         <span>Enter Test Portal</span>
-                        <div class="btn-loader"></div>
                     </button>
                 </div>
             </div>
@@ -61,7 +60,7 @@
             </header>
             
             <div class="sets-grid" id="setsGrid">
-                <!-- Dynamic sets will be loaded here -->
+                <!-- Dynamic sets loaded here -->
             </div>
         </div>
     </div>
@@ -88,7 +87,6 @@
     <!-- Writing Test Screen -->
     <div id="testScreen" class="screen">
         <div class="test-container">
-            <!-- Header -->
             <header class="test-header">
                 <div class="header-left">
                     <div class="student-info">
@@ -99,7 +97,7 @@
                 
                 <div class="header-center">
                     <div class="timer-display">
-                        <span class="timer-label">Time Remaining:</span>
+                        <span class="timer-label">Time Remaining</span>
                         <div class="timer" id="timer">60:00</div>
                     </div>
                 </div>
@@ -116,7 +114,6 @@
                 </div>
             </header>
 
-            <!-- Task Navigation -->
             <nav class="task-nav">
                 <button class="task-btn active" data-task="1">
                     <span class="task-number">01</span>
@@ -130,14 +127,13 @@
                 </button>
             </nav>
 
-            <!-- Resizable Split Container -->
             <div class="split-container" id="splitContainer">
                 <div class="split-panel question-panel">
                     <div class="panel-header">
                         <h3>Question</h3>
                     </div>
                     <div class="panel-content" id="questionContent">
-                        <!-- Dynamic content loaded here -->
+                        <!-- Content loaded dynamically -->
                     </div>
                 </div>
                 
@@ -149,20 +145,13 @@
                         <div class="word-count">Words: <span id="wordCount">0</span></div>
                     </div>
                     <div class="panel-content">
-                        <textarea 
-                            id="answerText" 
-                            placeholder="Begin writing your answer here..." 
-                            disabled
-                        ></textarea>
+                        <textarea id="answerText" placeholder="Begin writing your answer here..." disabled></textarea>
                     </div>
                 </div>
             </div>
 
-            <!-- Navigation Footer -->
             <footer class="test-footer">
-                <button id="prevTask" class="btn btn-secondary" disabled>
-                    ← Back to Task 1
-                </button>
+                <button id="prevTask" class="btn btn-secondary" disabled>← Previous</button>
                 
                 <div class="task-progress">
                     <span class="current-task">Task 1 of 2</span>
@@ -171,13 +160,9 @@
                     </div>
                 </div>
                 
-                <button id="nextTask" class="btn btn-primary">
-                    Next Task →
-                </button>
+                <button id="nextTask" class="btn btn-primary">Next →</button>
                 
-                <button id="submitBtn" class="btn btn-submit" disabled>
-                    Submit Test
-                </button>
+                <button id="submitBtn" class="btn btn-submit" disabled>Submit Test</button>
             </footer>
         </div>
     </div>
@@ -188,20 +173,20 @@
             <header class="review-header">
                 <h1>🎉 Test Submitted Successfully!</h1>
                 <div class="review-meta">
-                    <span>Time Spent: <strong id="finalTime">60:00</strong></span>
+                    <span>Time: <strong id="finalTime">60:00</strong></span>
                     <span>Submitted: <strong id="submitTime"></strong></span>
                 </div>
             </header>
             
             <div class="review-content">
                 <div class="review-section">
-                    <h3>Task 1 Review</h3>
+                    <h3>Task 1 Answer</h3>
                     <div class="review-answer" id="reviewAnswer1"></div>
                     <div class="word-count-review">Words: <span id="reviewWords1">0</span></div>
                 </div>
                 
                 <div class="review-section">
-                    <h3>Task 2 Review</h3>
+                    <h3>Task 2 Answer</h3>
                     <div class="review-answer" id="reviewAnswer2"></div>
                     <div class="word-count-review">Words: <span id="reviewWords2">0</span></div>
                 </div>
@@ -214,22 +199,22 @@
         </div>
     </div>
 
-    <!-- Warning Modals -->
+    <!-- Modals -->
     <div id="warningModal" class="modal">
         <div class="modal-content warning">
             <div class="modal-icon">⚠️</div>
-            <h3>Warning: Page Visibility Changed</h3>
-            <p>You have navigated away from the test page. If this happens again, your test will be automatically reset.</p>
-            <button id="closeWarning" class="btn btn-primary">I Understand</button>
+            <h3>Warning</h3>
+            <p>You have left the test page. If this happens again, your test will be reset.</p>
+            <button id="closeWarning" class="btn btn-primary">OK</button>
         </div>
     </div>
 
     <div id="cheatModal" class="modal">
         <div class="modal-content cheat">
             <div class="modal-icon">🚨</div>
-            <h3>Unusual Typing Pattern Detected</h3>
+            <h3>Unusual Activity Detected</h3>
             <p>Your typing speed exceeds normal limits. Please maintain a natural writing pace.</p>
-            <button id="closeCheat" class="btn btn-primary">Continue Writing</button>
+            <button id="closeCheat" class="btn btn-primary">Continue</button>
         </div>
     </div>
 
